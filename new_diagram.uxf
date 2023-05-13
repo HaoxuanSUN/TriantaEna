@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>981</x>
+      <y>486</y>
+      <w>306</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>GameLibrary
+--
+--
++start(): void
+-printGameList(): void
++createGame(String number): GeneralCardGame
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>234</y>
+      <w>234</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Deck
+--
+-deckCount: int
+#deck = new ArrayList(): List&lt;Card&gt;
+--
++Deck(int deckCount): ctor
++shuffle(): void
++initDeck(): void
+-initADeck(): List&lt;Card&gt;
++getNextCard(): Card
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>558</x>
+      <y>468</y>
+      <w>396</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>Card
+--
+-suitType: CardSuitType
+-valueType: CardValueType
+--
++Card(CardSuitType suitType, CardValueType valueType): ctor
++toString(): String
++getSuitType(): CardSuitType
++getValueType(): CardValueType
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>441</x>
+      <y>648</y>
+      <w>855</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>TriantaEna  (SubClass)
+--
+--
++TriantaEna(): ctor
+#playerFirstRound(Deck deck, List&lt;Player&gt; playerList):void
+#bankerFirstRound(Deck deck, List&lt;Player&gt; bankerList):void
+#playerLaterRound(Deck deck, List&lt;Player&gt; betplayerList):void
+-getCards(Deck deck, Player eachPlayer, List&lt;Integer&gt; handValueList, List&lt;Integer&gt; validHandValueList, List&lt;Player&gt; betplayerList): void
+-checkBust(List&lt;Integer&gt; validHandValueList): int
+#bankerLaterRound(Deck deck, List&lt;Player&gt; bankerList):void
+-checkAllAbove27(List&lt;Integer&gt; handValueList): boolean
+#roundOver(List&lt;Player&gt; bankerList, List&lt;Player&gt; betplayerList, List&lt;Player&gt; playerList):void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>288</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Main
+--
+--
++main(String[] args): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>711</x>
+      <y>18</y>
+      <w>585</w>
+      <h>405</h>
+    </coordinates>
+    <panel_attributes>/GeneralCardGame (abstract)/
+--
+#gameName: String
+#allplayerCount: int
+#playerInitalBalance: int
+#bankerBalanceFactor: int
+-deck: Deck
+#deckCount: int
+#playerValueMax: int
+#bankerValueMax: int
+#bankerList = new ArrayList&lt;Player&gt;(): List&lt;Player&gt;
+#playerList = new ArrayList&lt;Player&gt;(): List&lt;Player&gt;
+#betplayerList = new ArrayList&lt;Player&gt;(): List&lt;Player&gt;
+--
++init(): void
++startGame(): void
+#playerFirstRound(Deck deck, List&lt;Player&gt; playerList): void
+#bankerFirstRound(Deck deck, List&lt;Player&gt; bankerList): void
+#playerLaterRound(Deck deck, List&lt;Player&gt; betplayerList): void
+#bankerLaterRound(Deck deck, List&lt;Player&gt; bankerList): void
+#roundOver(List&lt;Player&gt; bankerList, List&lt;Player&gt; betplayerList, List&lt;Player&gt; playerList): void
++getHandValue(Player player, List&lt;Integer&gt; handValueList): List&lt;Integer&gt;
+-getAceNumber(List&lt;Card&gt; handList): int
++getAllValidHandValue(List&lt;Integer&gt; handValueList): List&lt;Integer&gt;
+#gameOver(List&lt;Player&gt; playerList, List&lt;Player&gt; bankerList): void
+-again(): boolean
+-switchRole(): void
+-gameSummary(): void
++start(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>963</x>
+      <y>414</y>
+      <w>27</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>171</x>
+      <y>396</y>
+      <w>369</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>TEPlayer (SubClass)
+--
+-handList = new ArrayList(): List&lt;Card&gt;
+-bet = 0: int
+-status: String
+-finalHandValue: int
+--
++TEPlayer(String name, String role, int initialBalance): ctor
++getStatus(): String
++setStatus(String newStatus): void
++getFinalHandValue(): int
++setFinalHandValue(int value): void
++setBet(int setBetNumber): void
++getBet(): int
++addHand(Card newCard): void
++getHandList(): List&lt;Card&gt;
++clearHandList(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>153</x>
+      <y>18</y>
+      <w>396</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>GeneralPlayer
+--
+-playerName: String
+-playerRole: String
+-balance: int
+--
++GeneralPlayer(String name, String role, int initialBalance): ctor
++getPlayerName(): String
++getPlayerRole(): String
++setBanker(): void
++setPlayer(): void
++updateBalance(int money): void
++getBalance(): int
++setBalance(int num): void
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>207</y>
+      <w>27</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+</diagram>
